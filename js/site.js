@@ -79,6 +79,8 @@ $(document).ready(function(){
 				
 			}
 		}
+
+		
 	    function reloadPoints(arr = checkPoints, map = myMap){
 	    	//очищаем карту от обьектов
 	    	myMap.geoObjects.removeAll();
