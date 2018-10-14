@@ -86,6 +86,16 @@ $(document).ready(function(){
 	    	drawPointsOnMap(checkPoints, myMap);
 		    pointContainer.html(drawPointsListItems(checkPoints));
 	    	pointContainer.sortable(sortableOptions);
+	    	//вешаем событие удаления на спан 
+	    	$(".del-point").on("click", function(){
+		    	
+		    	delID = $(this).parent().attr("data-point-id");
+		    	checkPoints.splice(delID,1);
+		    	
+		    	//Наносим точки на карту, выводим список, вешаем на него сортировку
+			    reloadPoints();
+
+		    });	
 	    }
 
 	    
@@ -112,16 +122,7 @@ $(document).ready(function(){
 			    	//Наносим точки на карту, выводим список, вешаем на него сортировку
 				    reloadPoints();
 
-				    //вешаем событие удаления на спан 
-			    	$(".del-point").on("click", function(){
-				    	
-				    	delID = $(this).parent().attr("data-point-id");
-				    	checkPoints.splice(delID,1);
-				    	
-				    	//Наносим точки на карту, выводим список, вешаем на него сортировку
-					    reloadPoints();
-
-				    });		    	
+				    	    	
 			    	$('#pointName').val("");
 		    	}		    
 			}
