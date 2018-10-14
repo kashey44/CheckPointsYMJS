@@ -95,31 +95,39 @@ $(document).ready(function(){
 	    
 	    
 	    $('#pointName').keydown(function (e) { //событие добавления в массив точек маршрута.
-	    	if(e.keyCode == 13 && $(this).val()!=""){
+	    	var errorText = "";
+	    	
+	    	if(e.keyCode == 13){
 	    		$('.error-container').val("");
-		    	var name = $(this).val();
-		    	var coords = myMap.getCenter();	
-		    	checkPoints.push([coords[0],coords[1],name]);
-		    	
-		    	
-		    	//Наносим точки на карту, выводим список, вешаем на него сортировку
-			    reloadPoints();
-
-			    //вешаем событие удаления на спан 
-		    	$(".del-point").on("click", function(){
+	    		if($(this).val() == ""){
+		    		errorText += "Ошибка! название точки не может быть пустым!";
+		    	}
+		    	if(errorText == ""){
+		    		$('.error-container').val("");
+			    	var name = $(this).val();
+			    	var coords = myMap.getCenter();	
+			    	checkPoints.push([coords[0],coords[1],name]);
 			    	
-			    	delID = $(this).parent().attr("data-point-id");
-			    	checkPoints.splice(delID,1);
 			    	
 			    	//Наносим точки на карту, выводим список, вешаем на него сортировку
 				    reloadPoints();
 
-			    });		    	
-		    	$('#pointName').val("");		    
+				    //вешаем событие удаления на спан 
+			    	$(".del-point").on("click", function(){
+				    	
+				    	delID = $(this).parent().attr("data-point-id");
+				    	checkPoints.splice(delID,1);
+				    	
+				    	//Наносим точки на карту, выводим список, вешаем на него сортировку
+					    reloadPoints();
+
+				    });		    	
+			    	$('#pointName').val("");
+		    	}		    
 			}
-			else{
-				$('.error-container').text("Ошибка! название точки не может быть пустым!");
-			}
+			
+			$('.error-container').text(errorText);
+			
 	    });
 
 	    
