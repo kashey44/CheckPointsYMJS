@@ -1,0 +1,51 @@
+html,body, .content, .main-container{
+      height:100%;
+    }
+
+#map{
+    
+    position: relative;
+    
+  }
+ #map .pointer{
+ 	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 32px;
+	z-index: 2000;
+ }
+
+#points-container{
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+	float: right;
+}
+#points-container li{
+	max-width: 100px;	
+
+}
+#points-container li span{
+	margin-left: 20px;
+}
+.content > div{
+	display: inline-block;
+	width: 50%;
+	min-height: 100%;
+	float: left;
+	min-width: 160px;
+}
+.map-controls{
+	text-align: right;
+}
+.clear{
+	clear: both;
+}
+.map-controls *{
+	margin-right: 20px;
+}
+.error-container{
+	font-size: 120%;
+	color: red;
+	text-transform: uppercase;
+}
